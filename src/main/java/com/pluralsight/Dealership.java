@@ -44,6 +44,8 @@ public class Dealership {
         for (Vehicle vehicle : inventory){
             if (vehicle.getPrice() >= min && vehicle.getPrice() <= max){
                 vehicles.add(vehicle);
+            }else{
+                System.out.println("Is not found");
             }
         }
         return vehicles;
@@ -53,6 +55,8 @@ public class Dealership {
         for (Vehicle vehicle : inventory){
             if (vehicle.getMake().equalsIgnoreCase(make) && vehicle.getModel().equalsIgnoreCase(model)){
                 vehicles.add(vehicle);
+            }else{
+                System.out.println("Is not found");
             }
         }
         return vehicles;
@@ -63,6 +67,8 @@ public class Dealership {
         for (Vehicle vehicle : inventory){
             if (vehicle.getYear() >= min && vehicle.getYear() <= max){
                 vehicles.add(vehicle);
+            }else{
+                System.out.println("Is not found");
             }
         }
         return vehicles;
@@ -73,6 +79,8 @@ public class Dealership {
         for (Vehicle vehicle : inventory){
             if (vehicle.getColor().equalsIgnoreCase(color)){
                 vehicles.add(vehicle);
+            }else{
+                System.out.println("Is not found");
             }
         }
         return vehicles;
@@ -83,6 +91,8 @@ public class Dealership {
         for (Vehicle vehicle : inventory){
             if (vehicle.getOdometer() >= min && vehicle.getOdometer() <= max){
                 vehicles.add(vehicle);
+            }else{
+                System.out.println("Is not found");
             }
         }
         return vehicles;
@@ -93,6 +103,8 @@ public class Dealership {
         for (Vehicle vehicle : inventory){
             if (vehicle.getVehicleType().equalsIgnoreCase(vehicleType)){
                 vehicles.add(vehicle);
+            }else{
+                System.out.println("Is not found");
             }
         }
         return vehicles;

@@ -166,18 +166,22 @@ public class UserInterface {
         }
 
     }
-    public void processRemoveVehicleRequest() throws IOException {
-        System.out.print("Please enter the vehicle vin: ");
-        int vin = scanner.nextInt();
-        scanner.nextLine();
-        for(Vehicle vehicle: dealership.getAllVehicles()){
-            if(vehicle.getVin() == vin) {
-                dealership.removeVehicle(vehicle);
-                break;
+    public void processRemoveVehicleRequest() {
+        try {
+            System.out.print("Please enter the vehicle vin: ");
+            int vin = scanner.nextInt();
+            scanner.nextLine();
+            for (Vehicle vehicle : dealership.getAllVehicles()) {
+                if (vehicle.getVin() == vin) {
+                    dealership.removeVehicle(vehicle);
+                    break;
+                }
             }
+            DealershipFileManager fileManager = new DealershipFileManager();
+            fileManager.saveDealership(dealership);
+        }catch (IOException e){
+            System.out.println("Error" + e.getMessage());
         }
-        DealershipFileManager fileManager = new DealershipFileManager();
-        fileManager.saveDealership(dealership);
     }
 
 }
