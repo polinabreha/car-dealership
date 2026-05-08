@@ -29,7 +29,7 @@ public class DealershipFileManager {
         for (Vehicle vehicle : dealership.getAllVehicles()) {
             bufferedWriter.write(vehicle.getVin()  + "|" + vehicle.getYear() + "|" + vehicle.getMake() + "|" +
                             vehicle.getModel() + "|" + vehicle.getVehicleType() + "|" + vehicle.getColor() + "|"
-                             +vehicle.getOdometer() + "|" + vehicle.getPrice() );
+                             +vehicle.getOdometer() + "|" +  vehicle.getPrice() );
             bufferedWriter.newLine();
         }
         bufferedWriter.close();
