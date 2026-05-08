@@ -47,7 +47,7 @@ public class Dealership {
             }
         }
         if(vehicles.isEmpty()){
-            System.out.println("Is not found");
+            System.out.println(Design.RED + "Is not found" + Design.RESET);
         }
         return vehicles;
     }
@@ -59,7 +59,7 @@ public class Dealership {
             }
         }
         if(vehicles.isEmpty()){
-            System.out.println("Is not found");
+            System.out.println(Design.RED + "Is not found"  + Design.RESET);
         }
         return vehicles;
     }
@@ -72,7 +72,7 @@ public class Dealership {
             }
         }
         if(vehicles.isEmpty()){
-            System.out.println("Is not found");
+            System.out.println(Design.RED + "Is not found"   + Design.RESET);
         }
         return vehicles;
     }
@@ -85,7 +85,7 @@ public class Dealership {
             }
         }
         if(vehicles.isEmpty()){
-            System.out.println("Is not found");
+            System.out.println(Design.RED + "Is not found"   + Design.RESET);
         }
         return vehicles;
     }
@@ -98,7 +98,7 @@ public class Dealership {
             }
         }
         if(vehicles.isEmpty()){
-            System.out.println("Is not found");
+            System.out.println(Design.RED + "Is not found"   + Design.RESET);
         }
 
         return vehicles;
@@ -112,7 +112,7 @@ public class Dealership {
             }
         }
         if(vehicles.isEmpty() ){
-            System.out.println("Is not found");
+            System.out.println(Design.RED + "Is not found"   + Design.RESET);
         }
         return vehicles;
     }

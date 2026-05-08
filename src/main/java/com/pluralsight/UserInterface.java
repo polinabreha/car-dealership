@@ -21,7 +21,7 @@ public class UserInterface {
             DealershipFileManager dealershipFileManager = new DealershipFileManager();
             this.dealership = dealershipFileManager.getDealership();
         }catch (IOException  e){
-            System.out.println("Error" + e.getMessage());
+            System.out.println(Design.RED+ "Error" + e.getMessage() + Design.RESET) ;
         }
     }
     public void display () throws IOException {
@@ -29,8 +29,8 @@ public class UserInterface {
         boolean exit = true;
         greeting();
         while (exit) {
-            System.out.println("Choose from the following options:");
-            System.out.println("1 - Find vehicles within a price range\n" +
+            System.out.println(Design.PURPLE + "Choose from the following options:" + Design.RESET);
+            System.out.println(Design.CYAN +"1 - Find vehicles within a price range\n" +
                     "2 - Find vehicles by make / model\n" +
                     "3 - Find vehicles by year range\n" +
                     "4 - Find vehicles by color\n" +
@@ -40,7 +40,7 @@ public class UserInterface {
                     "8 - Add a vehicle\n" +
                     "9 - Remove a vehicle\n" +
                     "99 - Quit");
-            System.out.print("Enter your choice: ");
+            System.out.print("Enter your choice: " + Design.RESET);
             int choice = scanner.nextInt();
             scanner.nextLine();
             switch (choice) {
@@ -76,7 +76,7 @@ public class UserInterface {
                         end();
                         break;
                 default:
-                    System.out.println("Wrong choice");
+                    System.out.println(Design.RED + "Wrong choice" + Design.RESET);
             }
 
         }
@@ -84,51 +84,51 @@ public class UserInterface {
     }
 
     public void processGetByPriceRequest(){
-        System.out.print("Please enter the minimum price: ");
+        System.out.print(Design.PURPLE + "Please enter the minimum price: " + Design.RESET);
         double minPrice = scanner.nextDouble();
         scanner.nextLine();
-        System.out.print("Please enter the maximum price: ");
+        System.out.print(Design.PURPLE +"Please enter the maximum price: " + Design.RESET);
         double maxPrice = scanner.nextDouble();
         scanner.nextLine();
         ArrayList<Vehicle> results = dealership.getVehiclesByPrice(minPrice, maxPrice);
         displayVehicles(results);
     }
     public void processGetByMakeModelRequest(){
-        System.out.print("Please enter the make of the model: ");
+        System.out.print(Design.PURPLE +"Please enter the make of the model: " + Design.RESET);
         String makeModel = scanner.nextLine();
-        System.out.print("Please enter the model: ");
+        System.out.print(Design.PURPLE + "Please enter the model: "  + Design.RESET);
         String model = scanner.nextLine();
         ArrayList <Vehicle> results = dealership.getVehiclesByMakeModel(makeModel, model);
         displayVehicles(results);
     }
     public void processGetByYearRequest(){
-        System.out.print("Please enter the minimum year range: ");
+        System.out.print(Design.PURPLE + "Please enter the minimum year range: "  + Design.RESET);
         int minYearRange = scanner.nextInt();
         scanner.nextLine();
-        System.out.print("Please enter the maximum year range: ");
+        System.out.print(Design.PURPLE + "Please enter the maximum year range: " + Design.RESET);
         int maxYearRange = scanner.nextInt();
         scanner.nextLine();
         ArrayList<Vehicle> result = dealership.getVehiclesByYear(minYearRange, maxYearRange);
         displayVehicles(result);
     }
     public void processGetByColorRequest(){
-        System.out.print("Please enter the color: ");
+        System.out.print(Design.PURPLE + "Please enter the color: " + Design.RESET);
         String color = scanner.nextLine();
         ArrayList <Vehicle> results = dealership.getVehiclesByColor(color);
         displayVehicles(results);
     }
     public void processGetByMileageRequest(){
-        System.out.print("Please enter the minimum mileage range: ");
+        System.out.print(Design.PURPLE + "Please enter the minimum mileage range: " + Design.RESET);
         int minMileageRange = scanner.nextInt();
         scanner.nextLine();
-        System.out.print("Please enter the maximum mileage range: ");
+        System.out.print(Design.PURPLE + "Please enter the maximum mileage range: "  + Design.RESET);
         int maxMileageRange = scanner.nextInt();
         scanner.nextLine();
         ArrayList<Vehicle> result = dealership.getVehiclesByMileage(minMileageRange, maxMileageRange);
         displayVehicles(result);
     }
     public void processGetByVehicleTypeRequest(){
-        System.out.print("Please enter the vehicle type: ");
+        System.out.print(Design.PURPLE + "Please enter the vehicle type: "  + Design.RESET);
         String vehicleType = scanner.nextLine();
         ArrayList<Vehicle> result =  dealership.getVehiclesByType(vehicleType);
         displayVehicles(result);
@@ -138,24 +138,24 @@ public class UserInterface {
     }
     public void processAddVehicleRequest() {
         try {
-            System.out.print("Enter vehicle vin: ");
+            System.out.print(Design.PURPLE + "Enter vehicle vin: "  + Design.RESET);
             int vin = scanner.nextInt();
             scanner.nextLine();
-            System.out.print("Enter the vehicle year: ");
+            System.out.print(Design.PURPLE + "Enter the vehicle year: " + Design.RESET);
             int year = scanner.nextInt();
             scanner.nextLine();
-            System.out.print("Please enter the vehicle make: ");
+            System.out.print(Design.PURPLE + "Please enter the vehicle make: " + Design.RESET);
             String make = scanner.nextLine();
-            System.out.print("Please enter the vehicle model: ");
+            System.out.print(Design.PURPLE + "Please enter the vehicle model: "  + Design.RESET);
             String model = scanner.nextLine();
-            System.out.print("Enter the vehicle type: ");
+            System.out.print(Design.PURPLE + "Enter the vehicle type: "  + Design.RESET);
             String vehicleType = scanner.nextLine();
-            System.out.print("Please enter the vehicle color: ");
+            System.out.print(Design.PURPLE + "Please enter the vehicle color: "   + Design.RESET);
             String color = scanner.nextLine();
-            System.out.print("Please enter the vehicle odometer: ");
+            System.out.print(Design.PURPLE + "Please enter the vehicle odometer: " + Design.RESET);
             int odometer = scanner.nextInt();
             scanner.nextLine();
-            System.out.print("Please enter the vehicle price ");
+            System.out.print(Design.PURPLE + "Please enter the vehicle price " + Design.RESET);
             double price = scanner.nextDouble();
             scanner.nextLine();
 
@@ -163,15 +163,15 @@ public class UserInterface {
             DealershipFileManager fileManager = new DealershipFileManager();
             dealership.addVehicle(newVehicle);
             fileManager.saveDealership(dealership);
-            System.out.println("Vehicle added successfully");
+            System.out.println(Design.PURPLE + "Vehicle added successfully" + Design.RESET);
         }catch (IOException e){
-            System.out.println("Error" + e.getMessage());
+            System.out.println(Design.RED+ "Error" + e.getMessage() + Design.RESET);
         }
 
     }
     public void processRemoveVehicleRequest() {
         try {
-            System.out.print("Please enter the vehicle vin: ");
+            System.out.print(Design.PURPLE + "Please enter the vehicle vin: "  + Design.RESET);
             int vin = scanner.nextInt();
             scanner.nextLine();
             for (Vehicle vehicle : dealership.getAllVehicles()) {
@@ -182,9 +182,9 @@ public class UserInterface {
             }
             DealershipFileManager fileManager = new DealershipFileManager();
             fileManager.saveDealership(dealership);
-            System.out.println("Successfully removed vehicle");
+            System.out.println(Design.PURPLE + "Successfully removed vehicle"  + Design.RESET);
         }catch (IOException e){
-            System.out.println("Error" + e.getMessage());
+            System.out.println(Design.RED + "Error" + e.getMessage()  + Design.RESET);
         }
     }
 
