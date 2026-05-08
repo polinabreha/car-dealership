@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class UserInterface {
     private Dealership dealership;
+    static final Scanner scanner = new Scanner(System.in);
 
     public UserInterface() {
     }
@@ -23,9 +24,8 @@ public class UserInterface {
             System.out.println("Error" + e.getMessage());
         }
     }
-    public void display (){
+    public void display () throws IOException {
         init();
-        Scanner scanner = new Scanner(System.in);
         boolean exit = true;
         while (exit) {
             System.out.println("Choose from the following options:");
@@ -81,16 +81,103 @@ public class UserInterface {
 
     }
 
-    public void processGetByPriceRequest(){}
-    public void processGetByMakeModelRequest(){}
-    public void processGetByYearRequest(){}
-    public void processGetByColorRequest(){}
-    public void processGetByMileageRequest(){}
-    public void processGetByVehicleTypeRequest(){}
+    public void processGetByPriceRequest(){
+        System.out.print("Please enter the minimum price: ");
+        double minPrice = scanner.nextDouble();
+        scanner.nextLine();
+        System.out.print("Please enter the maximum price: ");
+        double maxPrice = scanner.nextDouble();
+        scanner.nextLine();
+        ArrayList<Vehicle> results = dealership.getVehiclesByPrice(minPrice, maxPrice);
+        displayVehicles(results);
+    }
+    public void processGetByMakeModelRequest(){
+        System.out.print("Please enter the make of the model: ");
+        String makeModel = scanner.nextLine();
+        System.out.print("Please enter the model: ");
+        String model = scanner.nextLine();
+        ArrayList <Vehicle> results = dealership.getVehiclesByMakeModel(makeModel, model);
+        displayVehicles(results);
+    }
+    public void processGetByYearRequest(){
+        System.out.print("Please enter the minimum year range: ");
+        int minYearRange = scanner.nextInt();
+        scanner.nextLine();
+        System.out.print("Please enter the maximum year range: ");
+        int maxYearRange = scanner.nextInt();
+        scanner.nextLine();
+        ArrayList<Vehicle> result = dealership.getVehiclesByYear(minYearRange, maxYearRange);
+        displayVehicles(result);
+    }
+    public void processGetByColorRequest(){
+        System.out.print("Please enter the color: ");
+        String color = scanner.nextLine();
+        ArrayList <Vehicle> results = dealership.getVehiclesByColor(color);
+        displayVehicles(results);
+    }
+    public void processGetByMileageRequest(){
+        System.out.print("Please enter the minimum mileage range: ");
+        int minMileageRange = scanner.nextInt();
+        scanner.nextLine();
+        System.out.print("Please enter the maximum mileage range: ");
+        int maxMileageRange = scanner.nextInt();
+        scanner.nextLine();
+        ArrayList<Vehicle> result = dealership.getVehiclesByMileage(minMileageRange, maxMileageRange);
+        displayVehicles(result);
+    }
+    public void processGetByVehicleTypeRequest(){
+        System.out.print("Please enter the vehicle type: ");
+        String vehicleType = scanner.nextLine();
+        ArrayList<Vehicle> result =  dealership.getVehiclesByType(vehicleType);
+        displayVehicles(result);
+    }
     public void processGetAllVehiclesRequest(){
         displayVehicles(dealership.getAllVehicles());
     }
-    public void processAddVehicleRequest(){}
-    public void processRemoveVehicleRequest(){}
+    public void processAddVehicleRequest() {
+        try {
+            System.out.print("Enter vehicle vin: ");
+            int vin = scanner.nextInt();
+            scanner.nextLine();
+            System.out.print("Enter the vehicle year: ");
+            int year = scanner.nextInt();
+            scanner.nextLine();
+            System.out.print("Please enter the vehicle make: ");
+            String make = scanner.nextLine();
+            System.out.print("Please enter the vehicle model: ");
+            String model = scanner.nextLine();
+            System.out.print("Enter the vehicle type: ");
+            String vehicleType = scanner.nextLine();
+            System.out.print("Please enter the vehicle color: ");
+            String color = scanner.nextLine();
+            System.out.print("Please enter the vehicle odometer: ");
+            int odometer = scanner.nextInt();
+            scanner.nextLine();
+            System.out.print("Please enter the vehicle price ");
+            double price = scanner.nextDouble();
+            scanner.nextLine();
+
+            Vehicle newVehicle = new Vehicle(vin, year, make, model, vehicleType, color, odometer, price);
+            DealershipFileManager fileManager = new DealershipFileManager();
+            dealership.addVehicle(newVehicle);
+            fileManager.saveDealership(dealership);
+        }catch (IOException e){
+            System.out.println("Error" + e.getMessage());
+        }
+
+    }
+    public void processRemoveVehicleRequest() throws IOException {
+        System.out.print("Please enter the vehicle vin: ");
+        int vin = scanner.nextInt();
+        scanner.nextLine();
+        for(Vehicle vehicle: dealership.getAllVehicles()){
+            if(vehicle.getVin() == vin) {
+                dealership.removeVehicle(vehicle);
+                break;
+            }
+        }
+        DealershipFileManager fileManager = new DealershipFileManager();
+        fileManager.saveDealership(dealership);
+    }
 
 }
