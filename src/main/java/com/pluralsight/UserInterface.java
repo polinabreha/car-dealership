@@ -29,7 +29,7 @@ public class UserInterface {
         boolean exit = true;
         while (exit) {
             System.out.println("Choose from the following options:");
-            System.out.print("1 - Find vehicles within a price range\n" +
+            System.out.println("1 - Find vehicles within a price range\n" +
                     "2 - Find vehicles by make / model\n" +
                     "3 - Find vehicles by year range\n" +
                     "4 - Find vehicles by color\n" +
@@ -39,6 +39,7 @@ public class UserInterface {
                     "8 - Add a vehicle\n" +
                     "9 - Remove a vehicle\n" +
                     "99 - Quit");
+            System.out.print("Enter your choice: ");
             int choice = scanner.nextInt();
             scanner.nextLine();
             switch (choice) {
