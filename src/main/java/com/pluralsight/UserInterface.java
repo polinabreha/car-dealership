@@ -27,6 +27,7 @@ public class UserInterface {
     public void display () throws IOException {
         init();
         boolean exit = true;
+        greeting();
         while (exit) {
             System.out.println("Choose from the following options:");
             System.out.println("1 - Find vehicles within a price range\n" +
@@ -72,6 +73,7 @@ public class UserInterface {
                     break;
                 case 99:
                         exit = false;
+                        end();
                         break;
                 default:
                     System.out.println("Wrong choice");
@@ -184,6 +186,18 @@ public class UserInterface {
         }catch (IOException e){
             System.out.println("Error" + e.getMessage());
         }
+    }
+
+    public static void greeting(){
+        System.out.println(Design.PURPLE_BACKGROUND +"|---------------------------------------------------------|" + Design.RESET);
+        System.out.println(Design.PURPLE_BACKGROUND +"|        Welcome to Dealership Management System          |" + Design.RESET);
+        System.out.println(Design.PURPLE_BACKGROUND +"|---------------------------------------------------------|" + Design.RESET);
+    }
+
+    public static void end(){
+        System.out.println(Design.PURPLE_BACKGROUND +"|---------------------------------------------------------|" + Design.RESET);
+        System.out.println(Design.PURPLE_BACKGROUND +"|           Thank You for visiting us today               |" + Design.RESET);
+        System.out.println(Design.PURPLE_BACKGROUND +"|---------------------------------------------------------|" + Design.RESET);
     }
 
 }
