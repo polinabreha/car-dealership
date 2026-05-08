@@ -161,6 +161,7 @@ public class UserInterface {
             DealershipFileManager fileManager = new DealershipFileManager();
             dealership.addVehicle(newVehicle);
             fileManager.saveDealership(dealership);
+            System.out.println("Vehicle added successfully");
         }catch (IOException e){
             System.out.println("Error" + e.getMessage());
         }
@@ -179,6 +180,7 @@ public class UserInterface {
             }
             DealershipFileManager fileManager = new DealershipFileManager();
             fileManager.saveDealership(dealership);
+            System.out.println("Successfully removed vehicle");
         }catch (IOException e){
             System.out.println("Error" + e.getMessage());
         }
