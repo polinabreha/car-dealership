@@ -35,7 +35,7 @@ public class UserInterface {
                     "3 - Find vehicles by year range\n" +
                     "4 - Find vehicles by color\n" +
                     "5 - Find vehicles by mileage range\n" +
-                    "6 - Find vehicles by type (car, truck, SUV, van)\n" +
+                    "6 - Find vehicles by type (truck, SUV, van)\n" +
                     "7 - List ALL vehicles\n" +
                     "8 - Add a vehicle\n" +
                     "9 - Remove a vehicle\n" +
